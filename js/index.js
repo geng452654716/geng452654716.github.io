@@ -1,61 +1,5 @@
 var canvas = document.getElementsByTagName('canvas')[0];
 var normal = document.getElementById('normal');
-!function () {
-    var imgs = [
-        'images/light.png',
-        'images/btnselect2.png',
-        'images/btnselect2.png',
-        'images/btnselect2.png',
-        'images/btnselect1.png',
-        'images/btnselect.png',
-        'images/bg.png',
-        'images/machine.png',
-        'images/machine_b.png',
-        'images/wat.png',
-        'images/star1.png',
-        'images/star2.png',
-        'images/spatter.png',
-        'images/replay.png',
-        'images/plates.png',
-        'images/next.png',
-        'images/dot.png',
-        'images/dead.png',
-        'images/btn1.png',
-        'images/btn.png',
-        'images/btn3.png',
-        'images/menu.png',
-        'images/terminal.png'
-    ];
-
-    resourceDir = '';
-    function loadImg(urls, progress) {
-        var loadCount = 0;
-        var loaded = function () {
-            ++loadCount;
-            if (progress) progress(urls.length, loadCount, this);
-
-        };
-        for (var i = 0; i < urls.length; ++i) {
-            if (!urls[i]) {
-                loaded();
-                return;
-            }
-            var img = new Image();
-            img.onload = loaded;
-            img.onabort = loaded;
-            img.onerror = loaded;
-            img.src = resourceDir + urls[i];
-        }
-    }
-
-    loadImg(imgs, function (n, i, img) {
-        if (i != n) {
-            return;
-        } else {
-
-        }
-    })
-}()
 
 var the_background=document.getElementById('background');
 var bgm = document.getElementById('bgm');
@@ -63,7 +7,7 @@ var box = document.getElementsByClassName('box');
 var musicLoad = false;
 
 //背景音乐加载完成后开始游戏,进度条消失
-bgm.addEventListener('canplaythrough', function () {
+window.onload = function(){
     if (!musicLoad) {
         musicLoad = true;
         for (var i = 1; i < box.length; i++) {
@@ -76,7 +20,7 @@ bgm.addEventListener('canplaythrough', function () {
             }, 500)
         }
     }
-})
+}
 
 //hash:模式/人物/关卡/最高关卡/进度
 //最高关卡
